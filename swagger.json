@@ -1,0 +1,178 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Book APIs",
+      "description": "This is Swagger Documentation for Node JS Book APIs",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:8082",
+    "basePath": "/api",
+    "tags": [
+      {
+        "name": "Books",
+        "description": "API for Books in the system"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/books": {
+        "post": {
+          "tags": [
+            "Books"
+          ],
+          "summary": "Create new book in the system",
+          "parameters": [
+            {
+              "name": "book",
+              "in": "body",
+              "description": "Create new book in the system",
+              "schema": {
+                "$ref": "#/definitions/Book"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Book added successfully",
+              "schema": {
+                "$ref": "#/definitions/Book"
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Books"
+          ],
+          "summary": "Get all books in the system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Books"
+              }
+            }
+          }
+        }
+      },
+      "/books/{bookId}": {
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "required": true,
+            "description": "ID of the book that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Books"
+          ],
+          "summary": "Get the Book with given ID",
+          "responses": {
+            "200": {
+              "description": "Book is found",
+              "schema": {
+                "$ref": "#/definitions/Book"
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete book with given ID",
+          "tags": [
+            "Books"
+          ],
+          "responses": {
+            "200": {
+              "description": "Book entry deleted successfully",
+              "schema": {
+                "$ref": "#/definitions/Book"
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Update book with give ID",
+          "tags": [
+            "Books"
+          ],
+          "parameters": [
+            {
+              "name": "book",
+              "in": "body",
+              "description": "Book with new values of properties",
+              "schema": {
+                "$ref": "#/definitions/Book"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Book is updated",
+              "schema": {
+                "$ref": "#/definitions/Book"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+        "Book": {
+            "required": [
+                "title",
+                  "isbn",
+                  "author"
+            ],
+        "properties": {
+            "_id": {
+                "type": "string"
+                
+              },
+            "title": {
+                "type": "string"
+                
+              },
+              "isbn": {
+                "type": "string"
+                
+              },
+              "author": {
+                "type": "string"
+                
+              },
+              "description": {
+                "type": "string"
+              },
+              "published_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "publisher": {
+                "type": "string"
+              }
+        }
+      },
+      "Books": {
+        "type": "array",
+        "$ref": "#/definitions/Book"
+      }
+    }
+}
