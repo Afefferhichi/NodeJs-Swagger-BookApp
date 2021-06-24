@@ -10,7 +10,7 @@
 </p>
 
 # Usage
-### npm i to install dependencies
-### npm run app to run the project
+* npm i to install dependencies
+* npm run app to run the project
 
-## Api documentation can be found on: http://localhost:8082/api-docs/
+* Api documentation can be found on: http://localhost:8082/api-docs/
